@@ -1,1 +1,23 @@
 # 3.4-TodoList
+
+## Normal mode features
+
+- [] styling
+  - [x] just enough to tell what goes where to get started on js
+  - [] style it to be elegant
+
+- [x] As a guest I would like to see a blank todo item with a placeholder of
+"type todo item here" and after I type more than 2 characters I can press the
+return key to create the item
+  - [x] create a form to take inputs
+  - [x] create the js to add todos
+  - [x] add js to not let it append if 2 char or less
+
+- [] As a guest I would like to delete a todo when I select a todo with one
+click and then press the delete key
+
+- [] As a guest I would like to see a number of how many items are
+left in the todo list
+
+- [] As a guest I would like to complete a todo when i click the circle
+button next to the text
