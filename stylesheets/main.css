@@ -2,3 +2,55 @@
 * {
   box-sizing: border-box;
 }
+
+.body {
+  width: 500px;
+  font-family: sans-serif;
+}
+
+.listSection {
+  background-color: lightgrey;
+  height: 400px;
+}
+
+.todoHeader {
+  font-size: 50px;
+  font-weight: lighter;
+  margin: 0;
+  text-align: center;
+}
+
+.listDiv {
+  position: relative;
+  background-color: white;
+  border: 1px solid grey;
+  margin: 0 20px 50px 20px;
+}
+
+.todoList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.todoList__text {
+  color: black;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  font-size: 25px;
+  margin-top: 0px;
+  outline: none;
+  padding-left: 50px;
+  padding-bottom: 15px;
+  width: 100%;
+}
+
+.listSubmit {
+  display: none;
+}
+
+.todo__item {
+  border-bottom: 1px solid lightgrey;
+  font-size: 20px;
+  margin: 0;
+  padding: 10px 0 10px 50px;
+}
