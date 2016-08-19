@@ -2,12 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title> FEE - Boilerplate </title>
+    <title> 3.4 To-do List </title>
     <!-- Minimal Viable Product of your css -->
     <link rel="stylesheet" href="stylesheets/main.css" >
   </head>
-  <body>
-    
+  <body class="body">
+    <section class="listSection">
+      <h1 class="todoHeader">todos</h1>
+      <div class="listDiv">
+        <ul class="todoList">
+          <!-- this needs to be a text field -->
+          <form class=""
+                data-js="todoForm">
+            <input type="text"
+                   name="nextTodo"
+                   placeholder="type todo item here"
+                   class="todoList__text"
+                   data-js="newTodo"
+                   autocomplete="off">
+            <input class="listSubmit"
+                   data-js="submit"
+                   type="submit"
+                   name="submit"
+                   value="s">
+          </form>
+          <div data-js="todo__Items">
+
+          </div>
+        </ul>
+      </div>
+    </section>
     <!-- Having my scripts loaded AFTER all of my content does a few things... -->
     <!-- THIS DOES NOT ACCOMODATE FOR DOMCONTENTLOADED -->
     <!-- This is for usability... Ensuring content has loaded (or at least started) before interaction layer -->
