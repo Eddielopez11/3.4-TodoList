@@ -48,9 +48,31 @@
   display: none;
 }
 
-.todo__item {
-  border-bottom: 1px solid lightgrey;
-  font-size: 20px;
+.circleOutline {
+  border: 1px solid lightgreen;
+  border-radius: 50%;
+  display: inline-block;
+  height: 20px;
+  margin: 5px 15px;
+  width: 20px;
+}
+
+.checkMark {
+  font-size: 15px;
+  visibility: hidden;
   margin: 0;
-  padding: 10px 0 10px 50px;
+  padding-left: 3px;
+}
+
+.todo__item {
+  display: inline-block;
+  font-size: 25px;
+  line-height: 55px;
+  margin: 0;
+  width: 100px;
+}
+
+.listUnderline {
+  border-bottom: 1px solid lightgrey;
+  font-size: 0;
 }
