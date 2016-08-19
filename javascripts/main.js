@@ -12,7 +12,7 @@ $(function(){
   var $newTodoEl = $("[data-js='newTodo']");
   var $addTodo = $("[data-js='submit']");
   var $todoList = $("[data-js='todo__Items']");
-  console.log($todoFormEl, $newTodoEl, $addTodo, $todoList);
+
 
   $addTodo.on("click", function(e) {
     e.preventDefault();
@@ -25,8 +25,11 @@ $(function(){
 
   function addTodo(todoString){
     var todoTemplate = `
-      <li class="todo__item">
-        ${todoString}
+      <li class="listUnderline">
+        <div class="circleOutline">
+          <p class="checkMark">&#10003;</p>
+        </div>
+        <p class="todo__item">${todoString}</p>
       </li>
     `;
     $todoList.append(todoTemplate);
