@@ -53,13 +53,14 @@
   border-radius: 50%;
   display: inline-block;
   height: 20px;
-  margin: 5px 15px;
+  margin: 10px 15px;
+  vertical-align: bottom;
   width: 20px;
 }
 
 .checkMark {
   font-size: 15px;
-  visibility: hidden;
+  display: none;
   margin: 0;
   padding-left: 3px;
 }
@@ -67,12 +68,14 @@
 .todo__item {
   display: inline-block;
   font-size: 25px;
-  line-height: 55px;
+  line-height: 40px;
   margin: 0;
+  vertical-align: middle;
   width: 100px;
 }
 
 .listUnderline {
   border-bottom: 1px solid lightgrey;
+  height: 46px
   font-size: 0;
 }
