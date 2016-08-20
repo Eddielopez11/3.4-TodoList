@@ -19,5 +19,10 @@ click and then press the delete key
 - [] As a guest I would like to see a number of how many items are
 left in the todo list
 
-- [] As a guest I would like to complete a todo when i click the circle
+- [x] As a guest I would like to complete a todo when i click the circle
 button next to the text
+  - [x] create circle border with css
+  - [x] add a checkmark to items todoTemplate
+  - [x] hide checkmark with css
+  - [x] position both checkmark and circle
+  - [x] write js code to unhide/hide checkmark
