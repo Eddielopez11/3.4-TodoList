@@ -9,11 +9,14 @@
 }
 
 .listSection {
-  background-color: lightgrey;
-  height: 400px;
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-bottom: 200px;
+  height: auto;
 }
 
 .todoHeader {
+  color: #ff9999;
   font-size: 50px;
   font-weight: lighter;
   margin: 0;
@@ -21,9 +24,10 @@
 }
 
 .listDiv {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.17), 0 4px 8px 0 rgba(0, 0, 0, 0.16);
   position: relative;
   background-color: white;
-  border: 1px solid grey;
+  border: 1px solid #d9d9d9;
   margin: 0 20px 50px 20px;
 }
 
@@ -33,9 +37,9 @@
 }
 
 .todoList__text {
-  color: black;
+  color: #404040;
   border: none;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid #e6e6e6;
   font-size: 25px;
   margin-top: 0px;
   outline: none;
@@ -46,6 +50,10 @@
 
 .listSubmit {
   display: none;
+}
+
+.todo__items {
+  position: relative;
 }
 
 .circleOutline {
@@ -66,16 +74,34 @@
 }
 
 .todo__item {
+  color: #404040;
   display: inline-block;
   font-size: 25px;
   line-height: 40px;
   margin: 0;
   vertical-align: middle;
-  width: 100px;
+  width: 82%;
 }
 
 .listUnderline {
   border-bottom: 1px solid lightgrey;
   height: 46px
   font-size: 0;
+}
+
+.todo__itemDelete {
+  background: none;
+  color: red;
+  display: inline-block;
+  margin-top: 12px;
+  position: absolute;
+  right: 15px;
+  vertical-align: top;
+}
+
+.todo__footer {
+  color: #404040;
+  margin-left: 20px;
+  padding-top: 15px;
+  vertical-align: middle
 }
