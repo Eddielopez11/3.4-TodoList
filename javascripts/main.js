@@ -12,10 +12,36 @@ $(function(){
   var $newTodoEl = $("[data-js='newTodo']");
   var $addTodo = $("[data-js='submit']");
   var $todoList = $("[data-js='todo__Items']");
+  var $counter = $("[data-js='completedCounter']");
 
+  // delete selected with del key
+  // *** not working ***
+  $todoList.on("click", "[data-js='todo__item']", function(e){
+    var $current = $(e.currentTarget);
+    if ($current.data("clicked") == true){
+      $current.on("keyup", function(d){
+        if (d.keyCode == 8) {
+          $current.parent().remove();
+        }
+      });
+    };
+  });
+
+  // function to delete selected todo item
+  // *** deletes only on click right now ***
+  $todoList.on("click", "[data-js='todo__itemDelete']", function(e){
+    // current target is for physical x character
+    var $current = $(e.currentTarget);
+    // var to grag the selected parent which is the list
+    var $currentDelete = $current.parent("li");
+    $currentDelete.remove();
+  });
+
+  var checkClicked = false;
   // adds checkmark for completion when clicking on each todo list item
   // function is assigned to div then deligated
   $todoList.on("click", "[data-js='itemComplete']", function(e){
+    checkClicked = true;
     // $current is for clicked circle border
     var $current = $(e.currentTarget);
     // the circle selected then grabs its span child
@@ -24,6 +50,12 @@ $(function(){
     // toggles from starting hidden state to unhidden
     // and the other way aroung after that
     $currentCheck.toggle();
+    if (checkClicked == true) {
+      var $compNumb = $(".checkMark").filter(function(c){
+        return $(this).css("display") !== "none";
+      }).length;
+      completedCounter($compNumb);
+    }
   });
 
   // function for the todo text input
@@ -52,13 +84,28 @@ $(function(){
              &#10003;
           </span>
         </div>
-        <p class="todo__item">${todoString}</p>
+        <p class="todo__item"
+           data-js="todo__item">
+           ${todoString}
+        </p>
+        <mark class="todo__itemDelete"
+              data-js="todo__itemDelete">
+          X
+        </mark>
       </li>
     `;
     $todoList.append(todoTemplate);
   }
 
-
-
+  // completed counter
+  function completedCounter(num){
+    var counterTemplate = `
+      <footer class="todo__footer"
+              data-js="completedCounter">
+        <span>${num}</span> counter
+      </footer>
+    `;
+    $counter.replaceWith(counterTemplate)
+  }
 
 });
