@@ -1,55 +1,18 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // file for completing/counting compteted
-
-},{}],2:[function(require,module,exports){
-// file for adding new todos
-
-},{}],3:[function(require,module,exports){
-// Main.js
-"use strict";
-
 var $ = require('jquery');
-var adding = require('./input.js');
-var deleting = require('./remove.js');
-var completed = require('./completed.js')
 
-// jQuery's version of "DOMContentLoaded"
-$(function(){
-  // All DOM related code can go here
+var completed = this;
 
-  var $todoFormEl = $("[data-js='todoForm']");
-  var $newTodoEl = $("[data-js='newTodo']");
-  var $addTodo = $("[data-js='submit']");
-  var $todoList = $("[data-js='todo__Items']");
-  var $counter = $("[data-js='completedCounter']");
+completed.$todoListElement = $("[data-js='todo__Items']");
+completed.$counterElement = $("[data-js='completedCounter']");
 
-  // delete selected with del key
-  // *** not working ***
-  $todoList.on("click", "[data-js='todo__item']", function(e){
-    var $current = $(e.currentTarget);
-    if ($current.data("clicked") == true){
-      $current.on("keyup", function(d){
-        if (d.keyCode == 8) {
-          $current.parent().remove();
-        }
-      });
-    };
-  });
-
-  // function to delete selected todo item
-  // *** deletes only on click right now ***
-  $todoList.on("click", "[data-js='todo__itemDelete']", function(e){
-    // current target is for physical x character
-    var $current = $(e.currentTarget);
-    // var to grag the selected parent which is the list
-    var $currentDelete = $current.parent("li");
-    $currentDelete.remove();
-  });
+completed.init = function(){
 
   var checkClicked = false;
   // adds checkmark for completion when clicking on each todo list item
   // function is assigned to div then deligated
-  $todoList.on("click", "[data-js='itemComplete']", function(e){
+  completed.$todoListElement.on("click", "[data-js='itemComplete']", function(e){
     checkClicked = true;
     // $current is for clicked circle border
     var $current = $(e.currentTarget);
@@ -68,24 +31,51 @@ $(function(){
     checkClicked = false;
   });
 
+  // completed counter
+  function completedCounter(num){
+    var counterTemplate = `
+      <footer class="todo__footer"
+              data-js="completedCounter">
+        <span>${num}</span> completed
+      </footer>
+    `;
+    completed.$counterElement.replaceWith(counterTemplate)
+  }
+
+}
+
+},{"jquery":5}],2:[function(require,module,exports){
+// file for adding new todos
+var $ = require('jquery');
+
+var input = this;
+
+input.$todoListElement = $("[data-js='todo__Items']");
+input.$newTodoElement = $("[data-js='newTodo']");
+input.$addTodoElement = $("[data-js='submit']");
+
+input.init = function(){
   // function for the todo text input
   // on click worked best, tried keydown/keypress
   // and didnt work as planned
-  $addTodo.on("click", function(e) {
+
+
+  input.$addTodoElement.on("click", function(e) {
     // prevents the page from refreshing
     e.preventDefault();
     // variable for whats input into text field
-    var $todoValue = $newTodoEl.val();
+    var $todoValue = input.$newTodoElement.val();
     // if length of text is greater than two
     // than it may be added onto the list
     if ($todoValue.length > 2){
-      addTodo($todoValue);
-      $newTodoEl.val("");
+      input.addTodo($todoValue);
+      input.$newTodoElement.val("");
     };
   });
 
+
   // template function for new list item
-  function addTodo(todoString){
+  input.addTodo = function(todoString){
     var todoTemplate = `
       <li class="listUnderline">
         <div class="circleOutline"
@@ -104,26 +94,68 @@ $(function(){
         </mark>
       </li>
     `;
-    $todoList.append(todoTemplate);
-  }
+    input.$todoListElement.append(todoTemplate);
+  };
 
-  // completed counter
-  function completedCounter(num){
-    var counterTemplate = `
-      <footer class="todo__footer"
-              data-js="completedCounter">
-        <span>${num}</span> completed
-      </footer>
-    `;
-    $counter.replaceWith(counterTemplate)
-  }
+};
+
+},{"jquery":5}],3:[function(require,module,exports){
+// Main.js
+"use strict";
+
+var $ = require('jquery');
+var input = require('./input.js');
+var rem = require('./remove.js');
+var completed = require('./completed.js')
+
+// jQuery's version of "DOMContentLoaded"
+$(function(){
+  // All DOM related code can go here
+
+  input.init();
+  completed.init();
+  rem.init();
 
 });
 
 },{"./completed.js":1,"./input.js":2,"./remove.js":4,"jquery":5}],4:[function(require,module,exports){
 // file for completed todo items
+var $ = require('jquery');
 
-},{}],5:[function(require,module,exports){
+var rem = this;
+
+rem.$todoListElement = $("[data-js='todo__Items']");
+
+rem.init = function(){
+
+  // function to delete selected todo item
+  // *** deletes only on click right now ***
+  rem.$todoListElement.on("click", "[data-js='todo__itemDelete']", function(e){
+    // current target is for physical x character
+    var $current = $(e.currentTarget);
+    // var to grag the selected parent which is the list
+    var $currentDelete = $current.parent("li");
+    $currentDelete.remove();
+  });
+
+
+
+  // delete selected with del key
+  // *** not working ***
+  rem.$todoListElement.on("click", "[data-js='todo__item']", function(e){
+    var $current = $(e.currentTarget);
+    if ($current.data("clicked") == true){
+      $current.on("keyup", function(d){
+        if (d.keyCode == 8) {
+          $current.parent().remove();
+        }
+      });
+    };
+  });
+
+}
+
+},{"jquery":5}],5:[function(require,module,exports){
 /*eslint-disable no-unused-vars*/
 /*!
  * jQuery JavaScript Library v3.1.0
