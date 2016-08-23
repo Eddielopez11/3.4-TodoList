@@ -1,9 +1,17 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// file for completing/counting compteted
+
+},{}],2:[function(require,module,exports){
+// file for adding new todos
+
+},{}],3:[function(require,module,exports){
 // Main.js
-var $ = require('jquery');
 "use strict";
 
-
+var $ = require('jquery');
+var adding = require('./input.js');
+var deleting = require('./remove.js');
+var completed = require('./completed.js')
 
 // jQuery's version of "DOMContentLoaded"
 $(function(){
@@ -112,7 +120,10 @@ $(function(){
 
 });
 
-},{"jquery":2}],2:[function(require,module,exports){
+},{"./completed.js":1,"./input.js":2,"./remove.js":4,"jquery":5}],4:[function(require,module,exports){
+// file for completed todo items
+
+},{}],5:[function(require,module,exports){
 /*eslint-disable no-unused-vars*/
 /*!
  * jQuery JavaScript Library v3.1.0
@@ -10188,4 +10199,4 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}]},{},[1]);
+},{}]},{},[3]);
