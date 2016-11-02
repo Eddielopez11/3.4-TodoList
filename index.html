@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title> 3.4 To-do List </title>
+    <title> 4.2 refactor todo </title>
     <!-- Minimal Viable Product of your css -->
     <link rel="stylesheet" href="stylesheets/main.css" >
   </head>
@@ -33,6 +33,7 @@
           <div class="">
             <footer class="todo__footer"
                     data-js="completedCounter">
+                    0 completed
             </footer>
           </div>
         </ul>
@@ -41,7 +42,6 @@
     <!-- Having my scripts loaded AFTER all of my content does a few things... -->
     <!-- THIS DOES NOT ACCOMODATE FOR DOMCONTENTLOADED -->
     <!-- This is for usability... Ensuring content has loaded (or at least started) before interaction layer -->
-    <script src="javascripts/jquery-3.1.0.js" charset="utf-8"></script>
-    <script src="javascripts/main.js" charset="utf-8"></script>
+    <script src="javascripts/bundle.js" charset="utf-8"></script>
   </body>
 </html>
